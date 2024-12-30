@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist_flutter/view_models/app_view_model.dart';
+import 'package:todolist_flutter/views/bottom_sheets/add_task_bottom_sheet_view.dart';
 
 class AddTaskView extends StatelessWidget {
   const AddTaskView({super.key});
@@ -12,13 +13,17 @@ class AddTaskView extends StatelessWidget {
         height: 60,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: viewModel.clrLvl3, 
-            foregroundColor: viewModel.clrLvl1, 
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)
-              )),
-          onPressed: () {},
-          child: const Icon(Icons.add, size: 30.0),),
+              backgroundColor: viewModel.clrLvl3,
+              foregroundColor: viewModel.clrLvl1,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20))),
+          onPressed: () {
+            viewModel.bottomSheetBuilder(
+                const AddTaskBottomSheetView(),
+                context);
+          },
+          child: const Icon(Icons.add, size: 30.0),
+        ),
       );
     });
   }

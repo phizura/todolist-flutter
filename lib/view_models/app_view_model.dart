@@ -11,4 +11,22 @@ class AppViewModel extends ChangeNotifier {
   Color clrLvl2 = Colors.grey.shade200;
   Color clrLvl3 = Colors.grey.shade800;
   Color clrLvl4 = Colors.grey.shade900;
+
+  void addTask(Task newTask){
+    tasks.add(newTask);
+    notifyListeners();
+  }
+
+  void bottomSheetBuilder(Widget buttomSheetView, BuildContext context) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(40),
+      ),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      context: context,
+      builder: (context) {
+        return buttomSheetView;
+      },
+    );
+  }
 }
